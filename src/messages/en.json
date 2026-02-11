@@ -1,0 +1,76 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "theme": {
+      "light": "Light mode",
+      "dark": "Dark mode"
+    },
+    "language": {
+      "label": "Language",
+      "fr": "French",
+      "en": "English"
+    }
+  },
+  "hero": {
+    "title": "Innovation, Security & Performance for your digital journey",
+    "subtitle": "SENORIS, premium tech partner based in Senegal",
+    "description": "We design tailor‑made digital experiences: corporate & e‑commerce websites, mobile applications, cybersecurity audits, pentesting and specialized training.",
+    "cta": "Explore our services",
+    "contact": "Talk to an expert"
+  },
+  "about": {
+    "title": "SENORIS, your tech ally",
+    "subtitle": "A team of experts driven by innovation and cybersecurity",
+    "description": "Based in Senegal, SENORIS supports companies, startups and institutions in designing, securing and scaling their digital solutions. We combine technical excellence, attention to detail and strategic guidance.",
+    "vision": "Vision",
+    "visionText": "Build a safer, more efficient and more accessible digital ecosystem in Africa, powered by innovative and sustainable solutions.",
+    "mission": "Mission",
+    "missionText": "Deliver premium technology services — from web & mobile development to cybersecurity audits — with an unwavering focus on quality, transparency and measurable impact."
+  },
+  "services": {
+    "title": "Our services",
+    "subtitle": "End‑to‑end expertise for your digital presence",
+    "web": {
+      "title": "Website creation",
+      "description": "Elegant showcase websites, high‑converting online stores, interactive CVs and custom platforms designed to build trust and generate results."
+    },
+    "mobile": {
+      "title": "Mobile applications",
+      "description": "Design and development of iOS & Android apps that are intuitive, fast and aligned with your business goals."
+    },
+    "cyber": {
+      "title": "Cybersecurity & audit",
+      "description": "Comprehensive security audits, penetration testing, compliance support and training programs to strengthen your organization’s resilience."
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "Let’s talk about your project",
+    "description": "Tell us where you stand: we’ll help you clarify your needs, challenge your ideas and build a clear roadmap.",
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "social": "Social networks"
+    },
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "subject": "Subject",
+      "message": "Your message",
+      "send": "Send message"
+    }
+  },
+  "footer": {
+    "description": "SENORIS is a tech company based in Senegal, specialized in website creation, mobile application development and advanced cybersecurity.",
+    "quickLinks": "Navigation",
+    "followUs": "Follow us",
+    "rights": "All rights reserved."
+  }
+}
+

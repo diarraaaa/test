@@ -1,0 +1,76 @@
+{
+  "header": {
+    "nav": {
+      "home": "Accueil",
+      "about": "À propos",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "theme": {
+      "light": "Mode clair",
+      "dark": "Mode sombre"
+    },
+    "language": {
+      "label": "Langue",
+      "fr": "Français",
+      "en": "Anglais"
+    }
+  },
+  "hero": {
+    "title": "Innovation, Sécurité & Performance pour votre transformation digitale",
+    "subtitle": "SENORIS,  partenaire tech premium basé au Sénégal",
+    "description": "Nous concevons des expériences numériques sur-mesure : sites web vitrines & e‑commerce, applications mobiles, audits de cybersécurité, pentests et formations spécialisées.",
+    "cta": "Découvrir nos services",
+    "contact": "Parler à un expert"
+  },
+  "about": {
+    "title": "SENORIS, votre allié technologique",
+    "subtitle": "Une équipe d'experts passionnés par l'innovation et la cybersécurité",
+    "description": "Basée au Sénégal, SENORIS accompagne les entreprises, startups et institutions dans la conception, la sécurisation et la mise à l'échelle de leurs solutions digitales. Nous combinons expertise technique, sens du détail et accompagnement stratégique.",
+    "vision": "Vision",
+    "visionText": "Construire un écosystème numérique plus sûr, plus performant et plus accessible en Afrique, porté par des solutions innovantes et durables.",
+    "mission": "Mission",
+    "missionText": "Offrir des services technologiques premium — du développement web & mobile à l'audit de cybersécurité — avec une exigence constante de qualité, de transparence et de résultats."
+  },
+  "services": {
+    "title": "Nos services",
+    "subtitle": "Une expertise complète pour votre présence digitale",
+    "web": {
+      "title": "Création de sites web",
+      "description": "Sites vitrines élégants, boutiques en ligne performantes, CV interactifs et plateformes personnalisées, pensés pour convertir et inspirer confiance."
+    },
+    "mobile": {
+      "title": "Applications mobiles",
+      "description": "Conception et développement d'applications mobiles iOS & Android, ergonomiques, rapides et adaptées à vos enjeux métiers."
+    },
+    "cyber": {
+      "title": "Cybersécurité & audit",
+      "description": "Audit complet, pentesting, accompagnement à la conformité et programmes de formation pour renforcer la résilience de votre organisation."
+    }
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "subtitle": "Parlons de votre projet",
+    "description": "Dites-nous où vous en êtes : nous vous aidons à cadrer vos besoins, à challenger vos idées et à construire une feuille de route claire.",
+    "info": {
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "email": "Email",
+      "social": "Réseaux sociaux"
+    },
+    "form": {
+      "name": "Nom complet",
+      "email": "Adresse email",
+      "subject": "Sujet",
+      "message": "Votre message",
+      "send": "Envoyer le message"
+    }
+  },
+  "footer": {
+    "description": "SENORIS est une entreprise tech basée au Sénégal, spécialisée dans la création de sites web, le développement d'applications mobiles et la cybersécurité avancée.",
+    "quickLinks": "Navigation",
+    "followUs": "Suivez-nous",
+    "rights": "Tous droits réservés."
+  }
+}
+

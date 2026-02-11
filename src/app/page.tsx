@@ -1,4 +1,4 @@
-import MainHeader from '@/src/components/MainHeader';
+import Header from '@/src/components/MainHeader';
 import Hero from '@/src/components/Hero';
 import About from '@/src/components/About';
 import Services from '@/src/components/Services';
@@ -7,8 +7,8 @@ import Footer from '@/src/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen pt-24 pb-16 bg-black/95 dark:bg-black">
-      <MainHeader />
+    <main className="min-h-screen">
+      <Header />
       <Hero />
       <About />
       <Services />

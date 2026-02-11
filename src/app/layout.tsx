@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Inter } from 'next/font/google';
-import '../src/app/globals.css';
-import Providers from '@/src/components/Providers';
+import './globals.css';
+import Providers from '../components/Providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,4 +20,3 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
-
