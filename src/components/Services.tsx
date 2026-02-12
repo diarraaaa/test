@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Code, Smartphone, Shield, ArrowRight } from 'lucide-react';
+import { Code, Smartphone, Shield, ArrowRight, Sparkles, Zap } from 'lucide-react';
 
 export default function Services() {
   const t = useTranslations('services');
@@ -15,69 +15,63 @@ export default function Services() {
     {
       icon: Code,
       key: 'web',
-      gradient: 'from-blue-500 via-senoris-cyan to-teal-500',
-      bgGradient: 'from-blue-500/10 to-senoris-cyan/10',
       features: ['E-commerce', 'Sites Vitrines', 'Portfolios', 'CV Interactifs'],
     },
     {
       icon: Smartphone,
       key: 'mobile',
-      gradient: 'from-purple-500 via-pink-500 to-rose-500',
-      bgGradient: 'from-purple-500/10 to-pink-500/10',
       features: ['iOS & Android', 'Cross-platform', 'UI/UX Design', 'Performance'],
     },
     {
       icon: Shield,
       key: 'cyber',
-      gradient: 'from-senoris-gold via-orange-500 to-red-500',
-      bgGradient: 'from-senoris-gold/10 to-orange-500/10',
       features: ['Audit Sécurité', 'Pentesting', 'Formation', 'Conformité'],
     },
   ];
 
   return (
-    <section id="services" ref={ref} className="py-24 relative overflow-hidden">
-      {/* Animated Background */}
+    <section id="services" ref={ref} className="py-24 relative overflow-hidden bg-black">
+      {/* Background - Noir profond */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-senoris-navy/60 to-black"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-10"></div>
+        <div className="absolute inset-0 bg-black"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-senoris-gold/5 via-transparent to-transparent"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
+        {/* Section Header - Plus percutant */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
+          {/* Badge premium */}
           <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={isInView ? { scale: 1, rotate: 0 } : {}}
-            transition={{ duration: 0.8, type: 'spring' }}
-            className="inline-block mb-6"
+            initial={{ opacity: 0, y: -20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-senoris-gold/30 bg-senoris-gold/5 backdrop-blur-sm mb-8"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-senoris blur-2xl opacity-50"></div>
-              <div className="relative p-4 bg-gradient-senoris rounded-2xl">
-                <Code className="w-10 h-10 text-white" />
-              </div>
-            </div>
+            <Sparkles className="w-4 h-4 text-senoris-gold" />
+            <span className="text-xs uppercase tracking-wider text-senoris-gold font-semibold">
+              Services Premium
+            </span>
           </motion.div>
 
           <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">
-            <span className="bg-gradient-to-r from-senoris-cyan via-senoris-navy to-senoris-gold bg-clip-text text-transparent">
+           
+            <span className="bg-gradient-to-r from-senoris-gold via-yellow-400 to-amber-500 bg-clip-text text-transparent">
               {t('title')}
             </span>
           </h2>
 
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             {t('subtitle')}
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.key}
@@ -86,75 +80,74 @@ export default function Services() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="group relative"
             >
-              {/* Glow Effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500`}></div>
+              {/* Card - Noir profond avec bordures dorées subtiles */}
+              <div className="relative h-full bg-[#0A0A0A] rounded-3xl p-8 border border-white/5 group-hover:border-senoris-gold/30 transition-all duration-500 overflow-hidden">
+                
+                {/* Glow doré au hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-senoris-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Lignes de lumière */}
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              {/* Card */}
-              <div className="relative h-full bg-black/40 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/10 group-hover:border-transparent transition-all duration-500 overflow-hidden">
-                {/* Animated Border */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`}></div>
-                <div className="absolute inset-[2px] bg-black/80 backdrop-blur-xl rounded-3xl -z-10"></div>
-
-                {/* Icon */}
+                {/* Icon - Or pur */}
                 <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
+                  whileHover={{ scale: 1.05 }}
                   className="mb-6"
                 >
-                  <div className={`inline-flex p-4 bg-gradient-to-br ${service.gradient} rounded-2xl shadow-lg`}>
-                    <service.icon className="w-10 h-10 text-white" />
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-senoris-gold blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-2xl"></div>
+                    <div className="relative w-16 h-16 flex items-center justify-center bg-gradient-to-br from-senoris-gold/10 to-transparent border border-senoris-gold/30 rounded-2xl">
+                      <service.icon className="w-8 h-8 text-senoris-gold" />
+                    </div>
                   </div>
                 </motion.div>
 
-                {/* Title */}
-                <h3 className="text-3xl font-bold mb-4 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-senoris-cyan group-hover:to-senoris-gold group-hover:bg-clip-text transition-all duration-300">
+                {/* Title - Blanc pur, devient or au hover */}
+                <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-senoris-gold group-hover:to-amber-400 group-hover:bg-clip-text transition-all duration-300">
                   {t(`${service.key}.title`)}
                 </h3>
 
-                {/* Description */}
-                <p className="text-gray-300 mb-6 leading-relaxed">
+                {/* Description - Gris élégant */}
+                <p className="text-gray-500 mb-6 leading-relaxed group-hover:text-gray-400 transition-colors duration-300">
                   {t(`${service.key}.description`)}
                 </p>
 
-                {/* Features */}
-                <div className="space-y-3 mb-8">
+                {/* Features - Design épuré */}
+                <div className="space-y-2 mb-8">
                   {service.features.map((feature, idx) => (
                     <motion.div
                       key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      initial={{ opacity: 0 }}
+                      animate={isInView ? { opacity: 1 } : {}}
                       transition={{ delay: index * 0.2 + idx * 0.1 }}
-                      className="flex items-center space-x-2"
+                      className="flex items-center space-x-3"
                     >
-                      <div className="w-1.5 h-1.5 bg-gradient-to-r from-senoris-cyan to-senoris-gold rounded-full"></div>
-                      <span className="text-sm text-gray-400 font-medium">
+                      <div className="w-1 h-1 bg-senoris-gold/70 rounded-full"></div>
+                      <span className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors">
                         {feature}
                       </span>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* CTA Button */}
+                {/* CTA - Minimaliste */}
                 <motion.button
                   onClick={() => {
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                   whileHover={{ x: 5 }}
-                  className="inline-flex items-center space-x-2 text-sm font-semibold text-senoris-cyan group-hover:text-white transition-all duration-300 cursor-pointer"
+                  className="inline-flex items-center space-x-2 text-sm font-medium text-senoris-gold/80 group-hover:text-senoris-gold transition-all duration-300 cursor-pointer"
                 >
                   <span>En savoir plus</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
-
-                {/* Decorative Elements */}
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-senoris-cyan/10 to-transparent rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-senoris-gold/10 to-transparent rounded-full blur-3xl"></div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Call to Action */}
+        {/* CTA Principal */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -165,40 +158,17 @@ export default function Services() {
             onClick={() => {
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center space-x-3 px-10 py-5 bg-gradient-senoris text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-senoris-cyan/50 transition-all duration-300 hover:scale-105 group cursor-pointer"
+            className="group relative inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-senoris-gold to-amber-500 text-black font-bold text-lg rounded-2xl shadow-2xl shadow-senoris-gold/25 hover:shadow-senoris-gold/50 transition-all duration-300 hover:scale-105"
           >
             <span>Démarrer Votre Projet</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform" />
           </button>
         </motion.div>
       </div>
 
-      {/* Floating Elements */}
-      <motion.div
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 5, 0],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-40 right-20 w-20 h-20 bg-senoris-cyan/20 rounded-2xl rotate-12 blur-sm"
-      ></motion.div>
-
-      <motion.div
-        animate={{
-          y: [0, 20, 0],
-          rotate: [0, -5, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute bottom-40 left-20 w-16 h-16 bg-senoris-gold/20 rounded-2xl -rotate-12 blur-sm"
-      ></motion.div>
+      {/* Éléments flottants - Subtils */}
+      <div className="absolute top-1/4 left-10 w-32 h-32 border border-senoris-gold/10 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-1/4 right-10 w-40 h-40 border border-senoris-gold/10 rounded-full blur-2xl"></div>
     </section>
   );
 }

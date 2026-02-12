@@ -35,19 +35,19 @@ export default function Contact() {
       icon: MapPin,
       label: t('info.address'),
       value: 'Dakar, Sénégal',
-      color: 'from-senoris-cyan to-blue-600',
+      color: 'from-senoris-gold to-yellow-600',
     },
     {
       icon: Phone,
       label: t('info.phone'),
-      value: '+221 XX XXX XX XX',
+      value: '+221 77 483 05 01 ',
       color: 'from-senoris-gold to-yellow-600',
     },
     {
       icon: Mail,
       label: t('info.email'),
       value: 'Senoris2026@gmail.com',
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-senoris-gold to-yellow-600',
     },
   ];
 
@@ -62,7 +62,7 @@ export default function Contact() {
     <section id="contact" ref={ref} className="py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-senoris-navy/70 to-black"></div>
+        <div className="absolute inset-0 bg-blue"></div>
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       </div>
 
@@ -81,15 +81,15 @@ export default function Contact() {
             className="inline-block mb-6"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-senoris blur-2xl opacity-50"></div>
-              <div className="relative p-4 bg-gradient-senoris rounded-2xl">
+              <div className="absolute inset-0 bg-gold blur-2xl opacity-50"></div>
+              <div className="relative p-4 bg-gold rounded-2xl">
                 <Mail className="w-10 h-10 text-white" />
               </div>
             </div>
           </motion.div>
 
           <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">
-            <span className="bg-gradient-to-r from-senoris-cyan via-senoris-navy to-senoris-gold bg-clip-text text-transparent">
+            <span className="bg-senoris-gold bg-clip-text text-transparent">
               {t('title')}
             </span>
           </h2>
@@ -113,7 +113,7 @@ export default function Contact() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-senoris-cyan/10 to-senoris-gold/10 rounded-3xl blur-2xl"></div>
             
-            <form onSubmit={handleSubmit} className="relative bg-white dark:bg-senoris-navy/50 backdrop-blur-xl rounded-3xl p-8 border-2 border-gray-200 dark:border-senoris-cyan/20 shadow-2xl">
+            <form onSubmit={handleSubmit} className="relative bg-blue dark:bg-senoris-navy/50 backdrop-blur-xl rounded-3xl p-8 border-2 border-gray-200 dark:border-senoris-cyan/20 shadow-2xl">
               <div className="space-y-6">
                 {/* Name Input */}
                 <div>
@@ -127,14 +127,14 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-black"
                     placeholder="Diarra Dieng"
                   />
                 </div>
 
                 {/* Email Input */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-white mb-2">
                     {t('form.email')}
                   </label>
                   <input
@@ -144,7 +144,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-black"
                     placeholder="senoris@example.com"
                   />
                 </div>
@@ -161,14 +161,14 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-black"
                     placeholder="Demande de devis"
                   />
                 </div>
 
                 {/* Message Textarea */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-black dark:text-gray-300 mb-2">
                     {t('form.message')}
                   </label>
                   <textarea
@@ -188,7 +188,7 @@ export default function Contact() {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full px-8 py-4 bg-gradient-senoris text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 group"
+                  className="w-full px-8 py-4 bg-gradient-gold text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 group"
                 >
                   <span>{t('form.send')}</span>
                   <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -256,7 +256,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-gradient-senoris rounded-xl text-white hover:shadow-lg transition-all duration-300"
+                      className="p-3 bg-gradient-gold rounded-xl text-white hover:shadow-lg transition-all duration-300"
                       aria-label={social.label}
                     >
                       <social.icon className="w-6 h-6" />

@@ -16,13 +16,15 @@ export default function About() {
       icon: Target,
       title: t('vision'),
       description: t('visionText'),
-      color: 'from-senoris-cyan to-blue-600',
+      color: 'from-senoris-gold to-yellow-600',
+      bg:'gold',
     },
     {
       icon: Rocket,
       title: t('mission'),
       description: t('missionText'),
       color: 'from-senoris-gold to-yellow-600',
+      bg:'gold',
     },
   ];
 
@@ -52,18 +54,18 @@ export default function About() {
             transition={{ duration: 0.5 }}
             className="inline-block mb-4"
           >
-            <div className="p-3 bg-gradient-senoris rounded-2xl">
+            <div className="p-3 bg-gradient-gold rounded-2xl">
               <Shield className="w-8 h-8 text-white" />
             </div>
           </motion.div>
           
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
-            <span className="bg-gradient-to-r from-senoris-cyan to-senoris-gold bg-clip-text text-transparent">
+            <span className="bg-white bg-clip-text text-transparent">
               {t('title')}
             </span>
           </h2>
           
-          <p className="text-xl text-senoris-gold dark:text-senoris-gold font-medium mb-4">
+          <p className="text-xl text-white dark:text-senoris-gold font-medium mb-4">
             {t('subtitle')}
           </p>
           
@@ -119,10 +121,10 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-gradient-senoris rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-gradient-gold rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
               
               <div className="relative bg-white dark:bg-senoris-navy/70 backdrop-blur-sm rounded-xl p-6 border border-gray-200 dark:border-senoris-cyan/20 text-center hover:border-senoris-cyan dark:hover:border-senoris-gold transition-all duration-300">
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-senoris bg-clip-text text-transparent mb-2">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-gold bg-clip-text text-transparent mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">

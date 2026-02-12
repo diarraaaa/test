@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import Image from 'next/image'; // Ajouter l'import Image
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -23,11 +24,11 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-black via-senoris-navy to-black text-white overflow-hidden">
+    <footer className="relative bg-blue text-white overflow-hidden">
       {/* Decorative Background */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-senoris-cyan rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-senoris-gold rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-gold rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-gold rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative container mx-auto px-6 py-16">
@@ -41,13 +42,22 @@ export default function Footer() {
               className="mb-6"
             >
               <div className="flex items-center space-x-3 mb-4">
-                <div className="relative w-12 h-12">
-                  <div className="absolute inset-0 bg-gradient-senoris rounded-lg blur-lg"></div>
-                  <div className="relative w-full h-full bg-gradient-senoris rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                    S
+                {/* Logo du groupe - remplace le "S" */}
+                <div className="relative w-16 h-16">
+                  <div className="absolute inset-0 bg-gradient-gold rounded-2xl blur-xl opacity-60"></div>
+                  <div className="relative w-full h-full bg-image-/WhatsApp Image 2026-02-11 at 20.17.00.jpeg rounded-2xl p-2 shadow-2xl flex items-center justify-center">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/WhatsApp Image 2026-02-11 at 20.17.00.jpeg" // Remplacez par le chemin de votre logo de groupe
+                        alt="Groupe Senoris"
+                        fill
+                        className="object-contain"
+                        priority
+                      />
+                    </div>
                   </div>
                 </div>
-                <span className="text-3xl font-display font-bold bg-gradient-senoris bg-clip-text text-transparent">
+                <span className="text-3xl font-display font-bold bg-gradient-gold bg-clip-text text-transparent">
                   Senoris
                 </span>
               </div>
@@ -58,15 +68,15 @@ export default function Footer() {
 
               <div className="space-y-2 text-sm text-gray-400">
                 <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-senoris-cyan" />
+                  <MapPin className="w-4 h-4 text-senoris-gold" />
                   <span>Dakar, Sénégal</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4 text-senoris-cyan" />
-                  <span>+221 XX XXX XX XX</span>
+                  <Phone className="w-4 h-4 text-senoris-gold" />
+                  <span>+221 77 483 05 01</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4 text-senoris-cyan" />
+                  <Mail className="w-4 h-4 text-senoris-gold" />
                   <span>Senoris2026@gmail.com</span>
                 </div>
               </div>
@@ -80,7 +90,7 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="text-xl font-bold mb-6 bg-gradient-senoris bg-clip-text text-transparent">
+            <h3 className="text-xl font-bold mb-6 bg-gradient-gold bg-clip-text text-transparent">
               {t('quickLinks')}
             </h3>
             <ul className="space-y-3">
@@ -88,9 +98,9 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-senoris-cyan transition-colors duration-300 flex items-center space-x-2 group"
+                    className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center space-x-2 group"
                   >
-                    <span className="w-1.5 h-1.5 bg-senoris-cyan rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    <span className="w-1.5 h-1.5 bg-senoris-gold rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
                     <span>{link.label}</span>
                   </a>
                 </li>
@@ -105,7 +115,7 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h3 className="text-xl font-bold mb-6 bg-gradient-senoris bg-clip-text text-transparent">
+            <h3 className="text-xl font-bold mb-6 bg-gradient-gold bg-clip-text text-transparent">
               {t('followUs')}
             </h3>
             <div className="flex flex-wrap gap-4">
@@ -117,7 +127,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="p-3 bg-white/10 backdrop-blur-sm rounded-xl hover:bg-gradient-senoris transition-all duration-300 group"
+                  className="p-3 bg-white/10 backdrop-blur-sm rounded-xl hover:bg-gradient-gold transition-all duration-300 group"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
@@ -134,10 +144,10 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="Email"
-                  className="flex-1 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-l-lg focus:outline-none focus:border-senoris-cyan text-white placeholder-gray-400 text-sm"
+                  className="flex-1 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-l-lg focus:outline-none focus:border-senoris-gold text-white placeholder-gray-400 text-sm"
                 />
-                <button className="px-4 py-2 bg-gradient-senoris rounded-r-lg hover:shadow-lg transition-all duration-300">
-                  <Mail className="w-5 h-5" />
+                <button className="px-4 py-2 bg-gradient-gold rounded-r-lg hover:shadow-lg transition-all duration-300">
+                  <Mail className="w-5 h-5 text-white" />
                 </button>
               </div>
             </div>
@@ -154,14 +164,14 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400">
-              © {currentYear} Senoris. {t('rights')}
+              © {currentYear} Groupe Senoris. {t('rights')}
             </p>
 
             <div className="flex space-x-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-senoris-cyan transition-colors">
+              <a href="#" className="hover:text-senoris-gold transition-colors">
                 Politique de confidentialité
               </a>
-              <a href="#" className="hover:text-senoris-cyan transition-colors">
+              <a href="#" className="hover:text-senoris-gold transition-colors">
                 Conditions d'utilisation
               </a>
             </div>
@@ -169,7 +179,7 @@ export default function Footer() {
 
           {/* Tagline */}
           <div className="text-center mt-6">
-            <p className="text-sm font-medium bg-gradient-senoris bg-clip-text text-transparent">
+            <p className="text-sm font-medium bg-gradient-gold bg-clip-text text-transparent">
               INGENIUM. SECURITAS. FUTURUM.
             </p>
           </div>
@@ -177,7 +187,7 @@ export default function Footer() {
       </div>
 
       {/* Decorative Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-senoris"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-gold"></div>
     </footer>
   );
 }

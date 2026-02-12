@@ -57,7 +57,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative container mx-auto px-6 z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Animated SENORIS Text */}
+          {/* Animated SENORIS Text - Style Logo */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -65,41 +65,26 @@ export default function Hero() {
             className="mb-8 flex justify-center"
           >
             <div className="relative inline-flex items-center">
-              {/* Background Glow */}
-              <div className="absolute inset-0 bg-gradient-senoris blur-3xl opacity-50 animate-pulse"></div>
-              
-              {/* Letters */}
-              <div className="relative flex space-x-1 md:space-x-2">
+              {/* Letters avec couleur or simple */}
+              <div className="relative flex space-x-1 md:space-x-3 tracking-wider">
                 {letters.map((letter, index) => (
                   <motion.div
                     key={index}
-                    variants={letterVariants as unknown as  Variants}
+                    variants={letterVariants as unknown as Variants}
                     className="relative"
                     whileHover={{ 
-                      scale: 1.2, 
-                      rotate: [0, -5, 5, 0],
+                      scale: 1.1, 
+                      y: -5,
                       transition: { duration: 0.3 }
                     }}
                   >
-                    {/* Letter Glow */}
-                    <motion.div
-                      animate={{
-                        boxShadow: [
-                          '0 0 20px rgba(0, 229, 255, 0.5)',
-                          '0 0 40px rgba(212, 175, 55, 0.8)',
-                          '0 0 20px rgba(0, 229, 255, 0.5)',
-                        ],
+                    {/* Letter avec couleur or unie */}
+                    <span 
+                      className="relative text-6xl md:text-8xl lg:text-9xl font-serif font-bold tracking-wider"
+                      style={{
+                        color: '#d4af37',
                       }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.2,
-                      }}
-                      className="absolute inset-0 rounded-xl blur-sm"
-                    ></motion.div>
-
-                    {/* Letter */}
-                    <span className="relative text-6xl md:text-8xl font-display font-black bg-gradient-to-br from-senoris-cyan via-white to-senoris-gold bg-clip-text text-transparent drop-shadow-2xl">
+                    >
                       {letter}
                     </span>
                   </motion.div>
@@ -116,7 +101,7 @@ export default function Hero() {
                   repeat: Infinity,
                   ease: 'linear',
                 }}
-                className="absolute -top-8 -left-8 w-16 h-16 border-2 border-senoris-cyan/30 rounded-full"
+                className="absolute -top-12 -left-12 w-20 h-20 border-2 border-senoris-gold/40 rounded-full"
               ></motion.div>
 
               <motion.div
@@ -128,7 +113,7 @@ export default function Hero() {
                   repeat: Infinity,
                   ease: 'linear',
                 }}
-                className="absolute -bottom-8 -right-8 w-20 h-20 border-2 border-senoris-gold/30 rounded-full"
+                className="absolute -bottom-12 -right-12 w-24 h-24 border-2 border-senoris-gold/40 rounded-full"
               ></motion.div>
             </div>
           </motion.div>
@@ -141,7 +126,7 @@ export default function Hero() {
             className="mb-6 flex items-center justify-center space-x-2"
           >
             <Sparkles className="w-4 h-4 text-senoris-gold" />
-            <p className="text-sm md:text-base font-medium text-senoris-gold tracking-widest uppercase">
+            <p className="text-sm md:text-base font-medium tracking-widest uppercase text-senoris-gold">
               {t('title')}
             </p>
             <Sparkles className="w-4 h-4 text-senoris-gold" />
@@ -155,20 +140,8 @@ export default function Hero() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             style={{ fontFamily: 'var(--font-body)' }}
           >
-            <span className="bg-gradient-to-r from-senoris-cyan via-senoris-navy to-senoris-gold bg-clip-text text-transparent">
-              {t('subtitle')}
-            </span>
+          
           </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.6 }}
-            className="text-base md:text-lg text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed font-light"
-          >
-            {t('description')}
-          </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
@@ -181,20 +154,34 @@ export default function Hero() {
               onClick={() => {
                 document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group relative px-8 py-3.5 bg-gradient-senoris text-white rounded-xl font-semibold text-base shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden cursor-pointer"
+              className="group relative px-8 py-3.5 rounded-xl font-semibold text-base shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden cursor-pointer"
+              style={{
+                background: '#d4af37',
+                color: '#1a1a1a',
+              }}
             >
               <span className="relative z-10 flex items-center space-x-2">
                 <span>{t('cta')}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+              <div className="absolute inset-0 bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             </button>
 
             <button
               onClick={() => {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group px-8 py-3.5 border-2 border-senoris-cyan text-senoris-cyan rounded-xl font-semibold text-base hover:bg-senoris-cyan/10 transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="group px-8 py-3.5 border-2 rounded-xl font-semibold text-base transition-all duration-300 hover:scale-105 cursor-pointer"
+              style={{
+                borderColor: '#d4af37',
+                color: '#d4af37',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(212, 175, 55, 0.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent';
+              }}
             >
               <span className="flex items-center space-x-2">
                 <span>{t('contact')}</span>
@@ -204,13 +191,13 @@ export default function Hero() {
 
           {/* Floating Elements */}
           <div className="absolute top-1/4 left-10 animate-bounce delay-100">
-            <div className="w-4 h-4 bg-senoris-cyan rounded-full shadow-lg"></div>
+            <div className="w-4 h-4 bg-senoris-gold rounded-full shadow-lg"></div>
           </div>
           <div className="absolute top-1/3 right-20 animate-bounce delay-300">
             <div className="w-6 h-6 bg-senoris-gold rounded-full shadow-lg"></div>
           </div>
           <div className="absolute bottom-1/4 left-1/4 animate-bounce delay-500">
-            <div className="w-3 h-3 bg-senoris-cyan rounded-full shadow-lg"></div>
+            <div className="w-3 h-3 bg-senoris-gold rounded-full shadow-lg"></div>
           </div>
         </div>
       </div>
@@ -223,11 +210,11 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
       >
         <div className="flex flex-col items-center space-y-2">
-          <div className="w-6 h-10 border-2 border-senoris-cyan rounded-full flex justify-center">
+          <div className="w-6 h-10 border-2 border-senoris-gold rounded-full flex justify-center">
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1.5 h-1.5 bg-senoris-cyan rounded-full mt-2"
+              className="w-1.5 h-1.5 bg-senoris-gold rounded-full mt-2"
             ></motion.div>
           </div>
         </div>
