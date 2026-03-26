@@ -15,9 +15,9 @@ export async function POST(req: NextRequest) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'Senoris <onboarding@resend.dev>', // Replace with your verified domain once ready
-      to: ['diarradieng062004@gmail.com', 'Senoris2026@gmail.com'], // Both recipients will receive the message
-      subject: `[Nouveau Message] ${subject} - de ${name}`,
+      from: 'Senoris <contact@senoris.net>', // Branded domain address
+      to: ['diarradieng062004@gmail.com', 'Senoris2026@gmail.com'], // Professional inbox recipients
+      subject: `Formulaire rempli ${subject} - de ${name}`,
       html: `
         <div style="font-family: sans-serif; padding: 20px; color: #333;">
           <h2 style="color: #d4af37;">Nouveau message de contact - Senoris</h2>
