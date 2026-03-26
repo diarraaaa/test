@@ -2,11 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
-import Image from 'next/image'; // Ajouter l'import Image
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ChevronUp, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   const t = useTranslations('footer');
+  const navT = useTranslations('header.nav');
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -17,177 +18,169 @@ export default function Footer() {
   ];
 
   const quickLinks = [
-    { label: 'Accueil', href: '#hero' },
-    { label: 'À Propos', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Contact', href: '#contact' },
+    { key: 'home', href: '#hero' },
+    { key: 'about', href: '#about' },
+    { key: 'services', href: '#services' },
+    { key: 'contact', href: '#contact' },
   ];
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="relative bg-blue text-white overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-gold rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-gold rounded-full blur-3xl"></div>
-      </div>
+    <footer className="relative bg-[#050505] text-white pt-24 pb-12 overflow-hidden border-t border-white/5">
+      {/* Subtle Background Glows */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-senoris-cyan/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-senoris-gold/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="relative container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Brand Section */}
-          <div className="md:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-6"
-            >
-              <div className="flex items-center space-x-3 mb-4">
-                {/* Logo du groupe - remplace le "S" */}
-                <div className="relative w-16 h-16">
-                  <div className="absolute inset-0 bg-gradient-gold rounded-2xl blur-xl opacity-60"></div>
-                  <div className="relative w-full h-full bg-image-/WhatsApp Image 2026-02-11 at 20.17.00.jpeg rounded-2xl p-2 shadow-2xl flex items-center justify-center">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/WhatsApp Image 2026-02-11 at 20.17.00.jpeg" // Remplacez par le chemin de votre logo de groupe
-                        alt="Groupe Senoris"
-                        fill
-                        className="object-contain"
-                        priority
-                      />
-                    </div>
-                  </div>
-                </div>
-                <span className="text-3xl font-display font-bold bg-gradient-gold bg-clip-text text-transparent">
-                  Senoris
-                </span>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
+          {/* Brand - Focus on Professionalism */}
+          <div className="space-y-8">
+            <div className="flex items-center space-x-4">
+              <div className="relative w-12 h-12 bg-white rounded-xl p-2 shadow-2xl flex items-center justify-center transform rotate-3">
+                <Image
+                  src="/WhatsApp Image 2026-02-11 at 20.17.00.jpeg"
+                  alt="Senoris"
+                  fill
+                  className="object-contain p-1.5"
+                />
               </div>
-              
-              <p className="text-gray-300 leading-relaxed mb-4">
-                {t('description')}
-              </p>
+              <span className="text-3xl font-display font-bold tracking-tighter">
+                Senoris<span className="text-senoris-gold">.</span>
+              </span>
+            </div>
+            
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+              {t('description')}
+            </p>
 
-              <div className="space-y-2 text-sm text-gray-400">
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-senoris-gold" />
-                  <span>Dakar, Sénégal</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4 text-senoris-gold" />
-                  <span>+221 77 483 05 01</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4 text-senoris-gold" />
-                  <span>Senoris2026@gmail.com</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <h3 className="text-xl font-bold mb-6 bg-gradient-gold bg-clip-text text-transparent">
-              {t('quickLinks')}
-            </h3>
-            <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center space-x-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 bg-senoris-gold rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    <span>{link.label}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <h3 className="text-xl font-bold mb-6 bg-gradient-gold bg-clip-text text-transparent">
-              {t('followUs')}
-            </h3>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-3 bg-white/10 backdrop-blur-sm rounded-xl hover:bg-gradient-gold transition-all duration-300 group"
+                  whileHover={{ y: -3, color: '#d4af37' }}
+                  className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 transition-all duration-300 hover:border-senoris-gold/30 hover:bg-senoris-gold/5"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
+                  <social.icon className="w-5 h-5" />
                 </motion.a>
               ))}
             </div>
+          </div>
 
-            {/* Newsletter (Optional) */}
-            <div className="mt-8">
-              <p className="text-sm text-gray-400 mb-3">
-                Inscrivez-vous à notre newsletter
+          {/* Navigation */}
+          <div className="lg:pl-8">
+            <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-xs">
+              {t('quickLinks')}
+            </h4>
+            <ul className="space-y-4">
+              {quickLinks.map((link) => (
+                <li key={link.key}>
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-all duration-300 text-sm flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-4 h-px bg-senoris-gold mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                    {navT(link.key)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Details */}
+          <div>
+            <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-xs">
+              Contact
+            </h4>
+            <ul className="space-y-6">
+              <li className="flex items-start space-x-4 group">
+                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-senoris-gold shrink-0 border border-white/10 group-hover:border-senoris-gold/30 transition-colors">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div className="text-sm">
+                  <p className="text-white font-medium mb-1">Dakar, Sénégal</p>
+                  <p className="text-gray-400">HLM Grand Médine</p>
+                </div>
+              </li>
+              <li className="flex items-start space-x-4 group">
+                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-senoris-gold shrink-0 border border-white/10 group-hover:border-senoris-gold/30 transition-colors">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div className="text-sm">
+                  <p className="text-white font-medium mb-1">+221 77 483 05 01</p>
+                  <p className="text-gray-400">WhatsApp / Direct</p>
+                </div>
+              </li>
+              <li className="flex items-start space-x-4 group">
+                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-senoris-gold shrink-0 border border-white/10 group-hover:border-senoris-gold/30 transition-colors">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div className="text-sm">
+                  <p className="text-white font-medium mb-1 text-xs md:text-sm">Senoris2026@gmail.com</p>
+                  <p className="text-gray-400">Support / Contact</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter Section */}
+          <div className="space-y-8">
+            <div>
+              <h4 className="text-white font-bold mb-4 uppercase tracking-widest text-xs">
+                {t('newsletter.title')}
+              </h4>
+              <p className="text-gray-400 text-sm mb-6">
+                Restez informé de nos dernières innovations et actualités tech.
               </p>
-              <div className="flex">
+              <div className="relative group">
                 <input
                   type="email"
-                  placeholder="Email"
-                  className="flex-1 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-l-lg focus:outline-none focus:border-senoris-gold text-white placeholder-gray-400 text-sm"
+                  placeholder={t('newsletter.placeholder')}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-senoris-gold/50 transition-all duration-300 placeholder:text-gray-600"
                 />
-                <button className="px-4 py-2 bg-gradient-gold rounded-r-lg hover:shadow-lg transition-all duration-300">
-                  <Mail className="w-5 h-5 text-white" />
+                <button className="absolute right-1 top-1 bottom-1 px-4 bg-senoris-gold text-black rounded-lg text-xs font-bold hover:bg-yellow-500 transition-colors">
+                  {t('newsletter.button')}
                 </button>
               </div>
             </div>
-          </motion.div>
+            
+            {/* Scroll to Top inside footer */}
+            <button 
+              onClick={scrollToTop}
+              className="flex items-center space-x-2 text-xs font-bold text-gray-400 hover:text-white transition-colors duration-300 group uppercase"
+            >
+              <span>{t('rights').split('.')[0]}</span>
+              <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-senoris-gold transition-colors">
+                <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="pt-8 border-t border-white/10"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-gray-400">
-              © {currentYear} Groupe Senoris. {t('rights')}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8">
+            <p className="text-gray-500 text-xs tracking-wide">
+              &copy; {currentYear} Senoris Group. {t('rights')}
             </p>
-
-            <div className="flex space-x-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-senoris-gold transition-colors">
-                Politique de confidentialité
-              </a>
-              <a href="#" className="hover:text-senoris-gold transition-colors">
-                Conditions d'utilisation
-              </a>
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-500 hover:text-senoris-gold transition-colors text-xs uppercase tracking-widest">Privacy</a>
+              <a href="#" className="text-gray-500 hover:text-senoris-gold transition-colors text-xs uppercase tracking-widest">Terms</a>
             </div>
           </div>
-
-          {/* Tagline */}
-          <div className="text-center mt-6">
-            <p className="text-sm font-medium bg-gradient-gold bg-clip-text text-transparent">
-              INGENIUM. SECURITAS. FUTURUM.
-            </p>
+          
+          <div className="text-gray-600 flex items-center space-x-2 text-xs font-display">
+            <span className="w-2 h-2 rounded-full bg-senoris-cyan animate-pulse"></span>
+            <span className="uppercase tracking-[0.2em]">Crafting the future of Senegal</span>
           </div>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Decorative Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-gold"></div>
     </footer>
   );
 }

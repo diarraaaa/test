@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
@@ -16,11 +16,40 @@ export default function Contact() {
     subject: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setIsSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        console.error('Submission failed:', data.error);
+        alert('Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('Une erreur est survenue. Veuillez vérifier votre connexion.');
+    } finally {
+      setIsSubmitting(false);
+    }
+
+    // Reset success message after 10 seconds
+    setTimeout(() => setIsSuccess(false), 10000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -59,11 +88,11 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" ref={ref} className="py-24 relative overflow-hidden">
+    <section id="contact" ref={ref} className="py-24 relative overflow-hidden bg-white dark:bg-black">
       {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-blue"></div>
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div className="absolute inset-0 bg-white dark:bg-black"></div>
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -111,10 +140,19 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-senoris-cyan/10 to-senoris-gold/10 rounded-3xl blur-2xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-senoris-cyan/5 to-senoris-gold/5 rounded-3xl blur-xl"></div>
             
-            <form onSubmit={handleSubmit} className="relative bg-blue dark:bg-senoris-navy/50 backdrop-blur-xl rounded-3xl p-8 border-2 border-gray-200 dark:border-senoris-cyan/20 shadow-2xl">
-              <div className="space-y-6">
+            <div className="relative bg-gray-50 dark:bg-senoris-navy/50 backdrop-blur-xl rounded-3xl p-8 border-2 border-gray-200 dark:border-senoris-cyan/20 shadow-2xl overflow-hidden min-h-[400px] flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                {!isSuccess ? (
+                  <motion.form 
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    onSubmit={handleSubmit} 
+                    className="space-y-6"
+                  >
                 {/* Name Input */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
@@ -127,7 +165,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-black"
+                    className="w-full px-4 py-3 bg-white dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-white"
                     placeholder="Diarra Dieng"
                   />
                 </div>
@@ -144,7 +182,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-black"
+                    className="w-full px-4 py-3 bg-white dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-white"
                     placeholder="senoris@example.com"
                   />
                 </div>
@@ -161,14 +199,14 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-black"
+                    className="w-full px-4 py-3 bg-white dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-white"
                     placeholder="Demande de devis"
                   />
                 </div>
 
                 {/* Message Textarea */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-black dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                     {t('form.message')}
                   </label>
                   <textarea
@@ -178,23 +216,67 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-black resize-none"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-senoris-night/50 border-2 border-gray-200 dark:border-senoris-cyan/20 rounded-xl focus:border-senoris-cyan dark:focus:border-senoris-gold focus:outline-none transition-colors text-gray-900 dark:text-white resize-none"
                     placeholder="Décrivez votre projet..."
                   />
                 </div>
 
                 {/* Submit Button */}
-                <motion.button
+                <button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full px-8 py-4 bg-gradient-gold text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 group"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-gold text-white rounded-xl font-bold text-lg hover:shadow-gold-lg hover:scale-[1.02] transition-all duration-300 transform disabled:opacity-70 disabled:scale-100"
                 >
-                  <span>{t('form.send')}</span>
-                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-              </div>
-            </form>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      <span>{t('form.sending')}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>{t('form.send')}</span>
+                    </>
+                  )}
+                </button>
+                  </motion.form>
+                ) : (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center space-y-6 py-12"
+                  >
+                    <div className="relative inline-block">
+                      <div className="absolute inset-0 bg-senoris-gold blur-2xl opacity-20 animate-pulse"></div>
+                      <div className="relative w-20 h-20 bg-gradient-gold rounded-full flex items-center justify-center mx-auto shadow-gold">
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ type: 'spring', damping: 12, stiffness: 200, delay: 0.2 }}
+                        >
+                          <Send className="w-10 h-10 text-white" />
+                        </motion.div>
+                      </div>
+                    </div>
+                    <div className="space-y-2 text-center">
+                      <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                        {t('form.success').split('!')[0]}!
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 max-w-xs mx-auto text-center leading-relaxed">
+                        {t('form.success').split('!')[1]}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setIsSuccess(false)}
+                      className="text-senoris-gold font-bold hover:underline transition-all block mx-auto"
+                    >
+                      Envoyer un autre message
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </motion.div>
 
           {/* Contact Information */}
@@ -214,9 +296,9 @@ export default function Contact() {
                   transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                   className="group relative"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 group-hover:opacity-10 rounded-2xl blur-xl transition-opacity duration-300`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 group-hover:opacity-5 rounded-2xl blur-lg transition-opacity duration-300`}></div>
                   
-                  <div className="relative bg-blue dark:bg-senoris-navy/50 backdrop-blur-xl rounded-2xl p-6 border-2 border-gray-200 dark:border-senoris-cyan/20 group-hover:border-senoris-cyan dark:group-hover:border-senoris-gold transition-all duration-300 flex items-center space-x-4">
+                  <div className="relative bg-gray-50 dark:bg-senoris-navy/50 backdrop-blur-xl rounded-2xl p-6 border-2 border-gray-200 dark:border-senoris-cyan/20 group-hover:border-senoris-cyan dark:group-hover:border-senoris-gold transition-all duration-300 flex items-center space-x-4">
                     <div className={`p-3 bg-gradient-to-br ${info.color} rounded-xl`}>
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
@@ -242,7 +324,7 @@ export default function Contact() {
             >
               <div className="absolute inset-0 bg-gradient-senoris opacity-10 rounded-2xl blur-xl"></div>
               
-              <div className="relative bg-blue dark:bg-senoris-navy/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-gray-200 dark:border-senoris-cyan/20">
+              <div className="relative bg-gray-50 dark:bg-senoris-navy/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-gray-200 dark:border-senoris-cyan/20">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
                   {t('info.social')}
                 </h3>

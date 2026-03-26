@@ -18,6 +18,7 @@
   },
   "hero": {
     "title": "Innovation, Sécurité & Performance pour votre transformation digitale",
+    "subtitle": "SENORIS, votre partenaire technologique premium basé au Sénégal",
     "cta": "Découvrir nos services",
     "contact": "Parler à un expert"
   },
@@ -61,14 +62,21 @@
       "email": "Adresse email",
       "subject": "Sujet",
       "message": "Votre message",
-      "send": "Envoyer le message"
+      "send": "Envoyer le message",
+      "success": "Message envoyé ! Nous vous répondrons bientôt.",
+      "sending": "Envoi en cours..."
     }
   },
   "footer": {
     "description": "SENORIS est une entreprise tech basée au Sénégal, spécialisée dans la création de sites web, le développement d'applications mobiles et la cybersécurité avancée.",
     "quickLinks": "Navigation",
     "followUs": "Suivez-nous",
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "newsletter": {
+      "title": "S'abonner à la newsletter",
+      "placeholder": "Votre adresse email",
+      "button": "S'abonner"
+    }
   }
 }
 

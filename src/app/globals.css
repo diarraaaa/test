@@ -10,17 +10,31 @@
     /* Couleurs Senoris */
     --senoris-cyan: #00e5ff;
     --senoris-blue: #1a237e;
+    --senoris-navy: #111827;
+    --senoris-night: #030712;
     --senoris-gold: #d4af37;
     --senoris-dark: #000000;
   }
 
   html {
     scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
   }
 
   body {
-    @apply bg-black text-white;
+    @apply bg-white text-black dark:bg-black dark:text-white;
     font-family: var(--font-body);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -99,7 +113,7 @@
 
   /* Text Gradients */
   .text-gradient-senoris {
-    background-image: gold;
+    background-image: linear-gradient(135deg, #00e5ff, #1a237e, #d4af37);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -378,22 +392,9 @@
     animation-delay: 1000ms;
   }
 
-  /* Scrollbar Personnalisé */
+  /* Scrollbar Masqué */
   ::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-black;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #00e5ff, #d4af37);
-    border-radius: 9999px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #d4af37, #00e5ff);
+    display: none;
   }
 
   /* Selection */

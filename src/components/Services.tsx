@@ -30,11 +30,11 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" ref={ref} className="py-24 relative overflow-hidden bg-black">
-      {/* Background - Noir profond */}
+    <section id="services" ref={ref} className="py-24 relative overflow-hidden bg-white dark:bg-black">
+      {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-black"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-senoris-gold/5 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-white dark:bg-black"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-senoris-gold/3 via-transparent to-transparent"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
       </div>
 
@@ -80,15 +80,15 @@ export default function Services() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="group relative"
             >
-              {/* Card - Noir profond avec bordures dorées subtiles */}
-              <div className="relative h-full bg-[#0A0A0A] rounded-3xl p-8 border border-white/5 group-hover:border-senoris-gold/30 transition-all duration-500 overflow-hidden">
+              {/* Card - Subtile adaptation au mode */}
+              <div className="relative h-full bg-gray-50 dark:bg-[#0A0A0A] rounded-3xl p-8 border border-gray-200 dark:border-white/5 group-hover:border-senoris-gold/30 transition-all duration-500 overflow-hidden">
                 
                 {/* Glow doré au hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-senoris-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-senoris-gold/3 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 {/* Lignes de lumière */}
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 {/* Icon - Or pur */}
                 <motion.div
@@ -96,20 +96,20 @@ export default function Services() {
                   className="mb-6"
                 >
                   <div className="relative">
-                    <div className="absolute inset-0 bg-senoris-gold blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-2xl"></div>
-                    <div className="relative w-16 h-16 flex items-center justify-center bg-gradient-to-br from-senoris-gold/10 to-transparent border border-senoris-gold/30 rounded-2xl">
+                    <div className="absolute inset-0 bg-senoris-gold blur-lg opacity-0 group-hover:opacity-15 transition-opacity duration-500 rounded-2xl"></div>
+                    <div className="relative w-16 h-16 flex items-center justify-center bg-gradient-to-br from-senoris-gold/5 to-transparent border border-senoris-gold/20 rounded-2xl">
                       <service.icon className="w-8 h-8 text-senoris-gold" />
                     </div>
                   </div>
                 </motion.div>
 
                 {/* Title - Blanc pur, devient or au hover */}
-                <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-senoris-gold group-hover:to-amber-400 group-hover:bg-clip-text transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-senoris-gold group-hover:to-amber-400 group-hover:bg-clip-text transition-all duration-300">
                   {t(`${service.key}.title`)}
                 </h3>
 
                 {/* Description - Gris élégant */}
-                <p className="text-gray-500 mb-6 leading-relaxed group-hover:text-gray-400 transition-colors duration-300">
+                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-300 transition-colors duration-300">
                   {t(`${service.key}.description`)}
                 </p>
 
@@ -124,7 +124,7 @@ export default function Services() {
                       className="flex items-center space-x-3"
                     >
                       <div className="w-1 h-1 bg-senoris-gold/70 rounded-full"></div>
-                      <span className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors">
+                      <span className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-300 transition-colors">
                         {feature}
                       </span>
                     </motion.div>

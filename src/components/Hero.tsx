@@ -39,13 +39,13 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 bg-white dark:bg-black">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-senoris-navy/70 to-black">
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-senoris-cyan/5 to-white dark:from-black dark:via-senoris-navy/50 dark:to-black">
         {/* Geometric Patterns */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-senoris-cyan/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-senoris-gold/20 rounded-full blur-3xl animate-pulse delay-700"></div>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-senoris-cyan/20 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-senoris-gold/20 rounded-full blur-2xl animate-pulse delay-700"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-senoris-cyan/10 dark:border-senoris-cyan/30 rounded-full"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-senoris-gold/10 dark:border-senoris-gold/30 rounded-full"></div>
         </div>
@@ -132,15 +132,14 @@ export default function Hero() {
             <Sparkles className="w-4 h-4 text-senoris-gold" />
           </motion.div>
 
-          {/* Main Title */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-slate-800 dark:text-white"
             style={{ fontFamily: 'var(--font-body)' }}
           >
-          
+            {t('subtitle')}
           </motion.h1>
 
           {/* CTA Buttons */}
@@ -206,17 +205,42 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer group"
+        onClick={() => {
+          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+        }}
       >
-        <div className="flex flex-col items-center space-y-2">
-          <div className="w-6 h-10 border-2 border-senoris-gold rounded-full flex justify-center">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="relative w-6 h-10 rounded-full border border-senoris-gold/30 dark:border-senoris-gold/50 flex items-start justify-center p-1 group-hover:border-senoris-gold transition-colors duration-500 overflow-hidden shadow-lg">
+            {/* The Dot */}
             <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1.5 h-1.5 bg-senoris-gold rounded-full mt-2"
-            ></motion.div>
+              animate={{ 
+                y: [0, 20, 0],
+                opacity: [0.3, 1, 0.3]
+              }}
+              transition={{ 
+                duration: 2.5, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="w-1.5 h-1.5 bg-senoris-gold rounded-full shadow-[0_0_8px_#d4af37]"
+            />
+            
+            {/* Inner Glow Line */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-senoris-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
+          
+          <motion.div 
+            animate={{ 
+              opacity: [0.4, 0.8, 0.4],
+              y: [0, 2, 0]
+            }}
+            transition={{ duration: 3, repeat: Infinity }}
+            className="text-[10px] font-display text-senoris-gold tracking-[0.3em] font-bold uppercase transition-transform group-hover:scale-110"
+          >
+            Scroll
+          </motion.div>
         </div>
       </motion.div>
     </section>

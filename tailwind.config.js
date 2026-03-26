@@ -6,6 +6,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -16,15 +17,17 @@ module.exports = {
         senoris: {
           cyan: '#00e5ff',
           blue: '#1a237e',
+          navy: '#111827',
+          night: '#030712',
           gold: '#d4af37',
           dark: '#000000',
         },
       },
       boxShadow: {
-        'senoris': '0 0 30px rgba(0, 229, 255, 0.3)',
-        'senoris-lg': '0 0 50px rgba(0, 229, 255, 0.4)',
-        'gold': '0 0 30px rgba(212, 175, 55, 0.3)',
-        'gold-lg': '0 0 50px rgba(212, 175, 55, 0.4)',
+        'senoris': '0 0 10px rgba(0, 229, 255, 0.15)',
+        'senoris-lg': '0 0 20px rgba(0, 229, 255, 0.2)',
+        'gold': '0 0 10px rgba(212, 175, 55, 0.15)',
+        'gold-lg': '0 0 20px rgba(212, 175, 55, 0.2)',
       },
     },
   },
