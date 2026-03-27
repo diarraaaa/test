@@ -4,7 +4,8 @@ import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Mail, Phone, MapPin, Send, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { TikTokIcon } from './TikTokIcon';
 
 export default function Contact() {
   const t = useTranslations('contact');
@@ -69,22 +70,24 @@ export default function Contact() {
     {
       icon: Phone,
       label: t('info.phone'),
-      value: '+221 77 483 05 01 ',
+      value: '+221 77 483 05 01',
+      href: 'https://wa.me/221774830501',
       color: 'from-senoris-gold to-yellow-600',
     },
     {
       icon: Mail,
       label: t('info.email'),
       value: 'Senoris2026@gmail.com',
+      href: 'mailto:Senoris2026@gmail.com',
       color: 'from-senoris-gold to-yellow-600',
     },
   ];
 
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/share/1THZQkQK6q/', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Instagram, href: 'https://www.instagram.com/senoris2026?igsh=MWxyNHZqZ2E0N285aQ==', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/senoris', label: 'LinkedIn' },
+    { icon: TikTokIcon, href: 'https://www.tiktok.com/@senoris2026', label: 'TikTok' },
   ];
 
   return (
@@ -294,23 +297,30 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  className="group relative"
+                  className="group relative h-full"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 group-hover:opacity-5 rounded-2xl blur-lg transition-opacity duration-300`}></div>
-                  
-                  <div className="relative bg-gray-50 dark:bg-senoris-navy/50 backdrop-blur-xl rounded-2xl p-6 border-2 border-gray-200 dark:border-senoris-cyan/20 group-hover:border-senoris-cyan dark:group-hover:border-senoris-gold transition-all duration-300 flex items-center space-x-4">
-                    <div className={`p-3 bg-gradient-to-br ${info.color} rounded-xl`}>
-                      <info.icon className="w-6 h-6 text-white" />
+                  <a 
+                    href={info.href} 
+                    target={info.href?.startsWith('http') ? '_blank' : undefined}
+                    rel={info.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="block h-full"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 group-hover:opacity-5 rounded-2xl blur-lg transition-opacity duration-300`}></div>
+                    
+                    <div className="relative bg-gray-50 dark:bg-senoris-navy/50 backdrop-blur-xl rounded-2xl p-6 border-2 border-gray-200 dark:border-senoris-cyan/20 group-hover:border-senoris-cyan dark:group-hover:border-senoris-gold transition-all duration-300 flex items-center space-x-4 h-full">
+                      <div className={`p-3 bg-gradient-to-br ${info.color} rounded-xl`}>
+                        <info.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                          {info.label}
+                        </p>
+                        <p className="text-lg font-bold text-gray-900 dark:text-white">
+                          {info.value}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                        {info.label}
-                      </p>
-                      <p className="text-lg font-bold text-gray-900 dark:text-white">
-                        {info.value}
-                      </p>
-                    </div>
-                  </div>
+                  </a>
                 </motion.div>
               ))}
             </div>

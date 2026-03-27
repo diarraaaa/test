@@ -2,7 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ChevronUp, ExternalLink } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, ChevronUp, ExternalLink } from 'lucide-react';
+import { TikTokIcon } from './TikTokIcon';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -12,9 +13,9 @@ export default function Footer() {
 
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/share/1THZQkQK6q/', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Instagram, href: 'https://www.instagram.com/senoris2026?igsh=MWxyNHZqZ2E0N285aQ==', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/senoris', label: 'LinkedIn' },
+    { icon: TikTokIcon, href: 'https://www.tiktok.com/@senoris2026', label: 'TikTok' },
   ];
 
   const quickLinks = [
@@ -109,22 +110,34 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-start space-x-4 group">
-                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-senoris-gold shrink-0 border border-white/10 group-hover:border-senoris-gold/30 transition-colors">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div className="text-sm">
-                  <p className="text-white font-medium mb-1">+221 77 483 05 01</p>
-                  <p className="text-gray-400">WhatsApp / Direct</p>
-                </div>
+                <a 
+                  href="https://wa.me/221774830501" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-start space-x-4 w-full"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-senoris-gold shrink-0 border border-white/10 group-hover:border-senoris-gold/30 transition-colors">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div className="text-sm">
+                    <p className="text-white font-medium mb-1 group-hover:text-senoris-gold transition-colors">+221 77 483 05 01</p>
+                    <p className="text-gray-400">WhatsApp / Direct</p>
+                  </div>
+                </a>
               </li>
               <li className="flex items-start space-x-4 group">
-                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-senoris-gold shrink-0 border border-white/10 group-hover:border-senoris-gold/30 transition-colors">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div className="text-sm">
-                  <p className="text-white font-medium mb-1 text-xs md:text-sm">Senoris2026@gmail.com</p>
-                  <p className="text-gray-400">Support / Contact</p>
-                </div>
+                <a 
+                  href="mailto:Senoris2026@gmail.com"
+                  className="flex items-start space-x-4 w-full"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-senoris-gold shrink-0 border border-white/10 group-hover:border-senoris-gold/30 transition-colors">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div className="text-sm">
+                    <p className="text-white font-medium mb-1 group-hover:text-senoris-gold transition-colors text-xs md:text-sm">Senoris2026@gmail.com</p>
+                    <p className="text-gray-400">Support / Contact</p>
+                  </div>
+                </a>
               </li>
             </ul>
           </div>

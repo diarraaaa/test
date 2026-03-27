@@ -78,25 +78,28 @@ export default function Services() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group relative"
+              className="group relative cursor-pointer"
+              onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               {/* Card - Subtile adaptation au mode */}
-              <div className="relative h-full bg-gray-50 dark:bg-[#0A0A0A] rounded-3xl p-8 border border-gray-200 dark:border-white/5 group-hover:border-senoris-gold/30 transition-all duration-500 overflow-hidden">
+              <div className="relative h-full bg-gray-50 dark:bg-[#0A0A0A] rounded-3xl p-8 border border-gray-200 dark:border-white/5 group-hover:border-senoris-gold/50 transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-senoris-gold/5">
                 
                 {/* Glow doré au hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-senoris-gold/3 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-senoris-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 {/* Lignes de lumière */}
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-senoris-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 {/* Icon - Or pur */}
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                   className="mb-6"
                 >
                   <div className="relative">
-                    <div className="absolute inset-0 bg-senoris-gold blur-lg opacity-0 group-hover:opacity-15 transition-opacity duration-500 rounded-2xl"></div>
+                    <div className="absolute inset-0 bg-senoris-gold blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl"></div>
                     <div className="relative w-16 h-16 flex items-center justify-center bg-gradient-to-br from-senoris-gold/5 to-transparent border border-senoris-gold/20 rounded-2xl">
                       <service.icon className="w-8 h-8 text-senoris-gold" />
                     </div>
@@ -132,16 +135,10 @@ export default function Services() {
                 </div>
 
                 {/* CTA - Minimaliste */}
-                <motion.button
-                  onClick={() => {
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  whileHover={{ x: 5 }}
-                  className="inline-flex items-center space-x-2 text-sm font-medium text-senoris-gold/80 group-hover:text-senoris-gold transition-all duration-300 cursor-pointer"
-                >
+                <div className="inline-flex items-center space-x-2 text-sm font-medium text-senoris-gold/80 group-hover:text-senoris-gold transition-all duration-300">
                   <span>En savoir plus</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
+                </div>
               </div>
             </motion.div>
           ))}
