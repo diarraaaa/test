@@ -14,7 +14,27 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { data, error } = await resend.emails.send({
+    // Add the user as a contact in Resend
+    const nameParts = name.trim().split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    // We proceed even if contact creation fails, as sending the notification is the priority
+    try {
+      if (process.env.RESEND_AUDIENCE_ID) {
+        await resend.contacts.create({
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          unsubscribed: false,
+          audienceId: process.env.RESEND_AUDIENCE_ID,
+        });
+      }
+    } catch (contactError) {
+      console.error('Contact creation error:', contactError);
+    }
+
+    const { data: emailData, error: emailError } = await resend.emails.send({
       from: 'Senoris <contact@senoris.net>', // Branded domain address
       to: ['diarradieng062004@gmail.com', 'Senoris2026@gmail.com'], // Professional inbox recipients
       subject: `Formulaire rempli ${subject} - de ${name}`,
@@ -31,12 +51,12 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    if (error) {
-      console.error('Resend error:', error);
-      return NextResponse.json({ error }, { status: 500 });
+    if (emailError) {
+      console.error('Resend email error:', emailError);
+      return NextResponse.json({ error: emailError }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, data: emailData });
   } catch (error) {
     console.error('Server error:', error);
     return NextResponse.json(

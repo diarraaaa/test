@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, ChevronUp, ExternalLink } from 'lucide-react';
 import { TikTokIcon } from './TikTokIcon';
 import Image from 'next/image';
@@ -10,6 +11,35 @@ export default function Footer() {
   const t = useTranslations('footer');
   const navT = useTranslations('header.nav');
   const currentYear = new Date().getFullYear();
+
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [subSuccess, setSubSuccess] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+
+    setIsSubscribing(true);
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setSubSuccess(true);
+        setNewsletterEmail('');
+        setTimeout(() => setSubSuccess(false), 5000);
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/share/1THZQkQK6q/', label: 'Facebook' },
@@ -151,16 +181,34 @@ export default function Footer() {
               <p className="text-gray-400 text-sm mb-6">
                 Restez informé de nos dernières innovations et actualités tech.
               </p>
-              <div className="relative group">
+              <form onSubmit={handleSubscribe} className="relative group">
                 <input
                   type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder={t('newsletter.placeholder')}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-senoris-gold/50 transition-all duration-300 placeholder:text-gray-600"
+                  required
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 pr-24 text-sm focus:outline-none focus:border-senoris-gold/50 transition-all duration-300 placeholder:text-gray-600"
                 />
-                <button className="absolute right-1 top-1 bottom-1 px-4 bg-senoris-gold text-black rounded-lg text-xs font-bold hover:bg-yellow-500 transition-colors">
-                  {t('newsletter.button')}
+                <button 
+                  type="submit"
+                  disabled={isSubscribing || subSuccess}
+                  className="absolute right-1 top-1 bottom-1 px-4 bg-senoris-gold text-black rounded-lg text-xs font-bold hover:bg-yellow-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubscribing ? (
+                    <div className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin"></div>
+                  ) : subSuccess ? (
+                    "✓"
+                  ) : (
+                    t('newsletter.button')
+                  )}
                 </button>
-              </div>
+              </form>
+              {subSuccess && (
+                <p className="text-senoris-gold text-[10px] mt-2 animate-bounce">
+                  C'est fait ! Merci de nous suivre.
+                </p>
+              )}
             </div>
             
             {/* Scroll to Top inside footer */}
