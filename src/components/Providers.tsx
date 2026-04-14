@@ -43,7 +43,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 
   return (
     <LanguageContext.Provider value={languageValue}>
-      <NextIntlClientProvider locale={locale} messages={messages}>
+      <NextIntlClientProvider locale={locale} messages={messages} timeZone="Africa/Dakar">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

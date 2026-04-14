@@ -149,18 +149,6 @@ export default function Hero() {
             transition={{ delay: 1.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            {/* Bouton CV (Premium) */}
-            <a
-              href="https://cv.senoris.net"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative px-8 py-3.5 rounded-xl font-bold text-base shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden cursor-pointer bg-gradient-to-r from-senoris-gold to-amber-500 text-black flex items-center space-x-2"
-            >
-              <Sparkles className="w-5 h-5 animate-pulse" />
-              <span>{t('cv_cta')}</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-
             {/* Bouton Services */}
             <button
               onClick={() => {
