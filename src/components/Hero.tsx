@@ -149,38 +149,36 @@ export default function Hero() {
             transition={{ delay: 1.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
+            {/* Bouton CV (Premium) */}
+            <a
+              href="https://cv.senoris.net"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative px-8 py-3.5 rounded-xl font-bold text-base shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden cursor-pointer bg-gradient-to-r from-senoris-gold to-amber-500 text-black flex items-center space-x-2"
+            >
+              <Sparkles className="w-5 h-5 animate-pulse" />
+              <span>{t('cv_cta')}</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+
+            {/* Bouton Services */}
             <button
               onClick={() => {
                 document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group relative px-8 py-3.5 rounded-xl font-semibold text-base shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden cursor-pointer"
-              style={{
-                background: '#d4af37',
-                color: '#1a1a1a',
-              }}
+              className="group px-8 py-3.5 border-2 rounded-xl font-semibold text-base transition-all duration-300 hover:scale-105 cursor-pointer border-senoris-gold/40 text-senoris-gold hover:bg-senoris-gold/10"
             >
-              <span className="relative z-10 flex items-center space-x-2">
+              <span className="flex items-center space-x-2">
                 <span>{t('cta')}</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             </button>
 
+            {/* Bouton Contact */}
             <button
               onClick={() => {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group px-8 py-3.5 border-2 rounded-xl font-semibold text-base transition-all duration-300 hover:scale-105 cursor-pointer"
-              style={{
-                borderColor: '#d4af37',
-                color: '#d4af37',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(212, 175, 55, 0.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-              }}
+              className="group px-8 py-3.5 border-2 rounded-xl font-semibold text-base transition-all duration-300 hover:scale-105 cursor-pointer border-white/20 text-gray-400 hover:text-white hover:border-white/40"
             >
               <span className="flex items-center space-x-2">
                 <span>{t('contact')}</span>

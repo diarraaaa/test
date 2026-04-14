@@ -4,6 +4,7 @@
       "home": "Accueil",
       "about": "À propos",
       "services": "Services",
+      "cv": "Créer un CV",
       "contact": "Contact"
     },
     "theme": {
@@ -20,6 +21,7 @@
     "title": "Innovation, Sécurité & Performance pour votre transformation digitale",
     "subtitle": "SENORIS, votre partenaire technologique premium basé au Sénégal",
     "cta": "Découvrir nos services",
+    "cv_cta": "Créer mon CV Professionnel",
     "contact": "Parler à un expert"
   },
   "about": {
@@ -35,8 +37,8 @@
     "title": "Nos services",
     "subtitle": "Une expertise complète pour votre présence digitale",
     "web": {
-      "title": "Création de sites web",
-      "description": "Sites vitrines élégants, boutiques en ligne performantes, CV interactifs et plateformes personnalisées, pensés pour convertir et inspirer confiance."
+      "title": "Plateforme CV & Web",
+      "description": "Créez des CV professionnels en quelques minutes avec notre plateforme dédiée, profitez de sites vitrines élégants et de solutions e-commerce performantes."
     },
     "mobile": {
       "title": "Applications mobiles",

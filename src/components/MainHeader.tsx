@@ -8,10 +8,11 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 const navItems = [
-  { key: 'home', href: '#hero' },
-  { key: 'about', href: '#about' },
-  { key: 'services', href: '#services' },
-  { key: 'contact', href: '#contact' },
+  { key: 'home', href: '#hero', isExternal: false },
+  { key: 'about', href: '#about', isExternal: false },
+  { key: 'services', href: '#services', isExternal: false },
+  { key: 'cv', href: 'https://cv.senoris.net', isExternal: true },
+  { key: 'contact', href: '#contact', isExternal: false },
 ] as const;
 
 export default function MainHeader() {
@@ -81,10 +82,12 @@ export default function MainHeader() {
               <motion.a
                 key={item.key}
                 href={item.href}
+                target={item.isExternal ? "_blank" : undefined}
+                rel={item.isExternal ? "noopener noreferrer" : undefined}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
-                className="text-gray-700 dark:text-gray-300 hover:text-senoris-gold transition-colors font-medium relative group"
+                className={`text-gray-700 dark:text-gray-300 hover:text-senoris-gold transition-colors font-medium relative group ${item.isExternal ? 'text-senoris-gold font-bold' : ''}`}
               >
                 {t(`nav.${item.key}`)}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-senoris-gold to-amber-500 group-hover:w-full transition-all duration-300" />
@@ -140,6 +143,8 @@ export default function MainHeader() {
                   <a
                     key={item.key}
                     href={item.href}
+                    target={item.isExternal ? "_blank" : undefined}
+                    rel={item.isExternal ? "noopener noreferrer" : undefined}
                     onClick={() => setIsMenuOpen(false)}
                     className="text-gray-700 dark:text-gray-300 hover:text-senoris-gold transition-colors font-medium py-2 border-b border-senoris-gold/10 dark:border-senoris-gold/20 last:border-0 group"
                   >

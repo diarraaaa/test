@@ -4,6 +4,7 @@
       "home": "Home",
       "about": "About",
       "services": "Services",
+      "cv": "Create CV",
       "contact": "Contact"
     },
     "theme": {
@@ -20,7 +21,8 @@
     "title": "Innovation, Security & Performance for your digital journey",
     "subtitle": "SENORIS, premium tech partner based in Senegal",
     "description": "We design tailor‑made digital experiences: corporate & e‑commerce websites, mobile applications, cybersecurity audits, pentesting and specialized training.",
-    "cta": "Explore our services",
+    "cta": "Discover our services",
+    "cv_cta": "Create my Professional CV",
     "contact": "Talk to an expert"
   },
   "about": {
@@ -36,8 +38,8 @@
     "title": "Our services",
     "subtitle": "End‑to‑end expertise for your digital presence",
     "web": {
-      "title": "Website creation",
-      "description": "Elegant showcase websites, high‑converting online stores, interactive CVs and custom platforms designed to build trust and generate results."
+      "title": "CV Platform & Web",
+      "description": "Create professional CVs in minutes with our dedicated platform, enjoy elegant showcase websites and high-performing e-commerce solutions."
     },
     "mobile": {
       "title": "Mobile applications",
