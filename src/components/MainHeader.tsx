@@ -11,6 +11,7 @@ const navItems = [
   { key: 'home', href: '#hero', isExternal: false },
   { key: 'about', href: '#about', isExternal: false },
   { key: 'services', href: '#services', isExternal: false },
+  { key: 'projects', href: '#projects', isExternal: false },
   { key: 'cv', href: 'https://cv.senoris.net', isExternal: true },
   { key: 'contact', href: '#contact', isExternal: false },
 ] as const;

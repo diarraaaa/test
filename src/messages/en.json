@@ -4,6 +4,7 @@
       "home": "Home",
       "about": "About",
       "services": "Services",
+      "projects": "Projects",
       "cv": "Create CV",
       "contact": "Contact"
     },
@@ -79,6 +80,15 @@
       "title": "Subscribe to our newsletter",
       "placeholder": "Your email address",
       "button": "Subscribe"
+    }
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Discover our latest achievements and platforms",
+    "cv_generator": {
+      "title": "Senoris CV Generator",
+      "description": "An intuitive platform to create professional CVs in just a few clicks with modern and personalized templates.",
+      "cta": "Launch Generator"
     }
   }
 }
